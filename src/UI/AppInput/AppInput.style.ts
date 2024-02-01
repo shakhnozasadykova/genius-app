@@ -4,16 +4,18 @@ export const StyledInput = styled.input<{ $isError: boolean }>`
     outline: 0;
     font-family: inherit;
     padding: 12px 15px;
-    background-color: ${(props) => props.theme.colors.bgc};
+    background-color: #363636;
+    border-color: #555;
     border-radius: 10px;
-    border: 2px solid ${(props) => props.theme.colors.disabledBgc};
+    color: #ccc;
+    border: 2px;
     width: 100%;
     margin-bottom: 20px;
 
     ${(props) =>
     props.$isError &&
     css`
-      border-color: ${(props) => props.theme.colors.red};
+      border-color: red;
     `}
 `
 

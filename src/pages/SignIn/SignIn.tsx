@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+
+import { SignInStyle } from "./SignIn.style";
 import { Heading } from "../../components/Typography/Heading/Heading";
 import { AppInput } from "../../UI/AppInput/AppInput";
 import { AppButton } from "../../UI/AppButton/AppButton";
@@ -16,12 +18,12 @@ const loginPageFields = {
 const loginValidationSchema = yup.object({
   userEmail: yup
     .string()
-    .required("Обязательное поле")
-    .email("Формат должен соответствовать формату email"),
+    .required("Required field")
+    .email("Format should match email format"),
   userPassword: yup
     .string()
-    .required("Обязательное поле")
-    .min(4, "Пароль должен содержать как минимум 4 символа"),
+    .required("Required field")
+    .min(4, "Password must be at least 4 characters long"),
 });
 
 export const SignIn = () => {
@@ -45,98 +47,82 @@ export const SignIn = () => {
   useEffect(() => {
     console.log("USER:", userData);
     if (userData?.user_id) {
-      navigate("/profile-page");
+      navigate("/main-page");
     }
   }, [userData, navigate]);
 
   return (
-    <div>
-      <div className="Header">
-        <div className="HeaderPrimary">
-          <input />
-          <img></img>
+    <SignInStyle>
+      <div>
+        <div className="Header">
+          <div className="HeaderPrimary">
+            <form className="Search">
+              <input type="text" placeholder="Search lyrics  & more" />
+            </form>
+            <img className="Logo" src={require('../../images/Genius_website_logo.svg.png')} alt="Logo"/>
+          </div>
+          <div className="HeaderMenu">
+            <ul>
+              <li className="MenuItem">
+                The 50th
+                <span>|</span>
+              </li>
+              <li className="MenuItem">
+                Featured
+                <span>|</span>
+              </li>
+              <li className="MenuItem">
+                Charts
+                <span>|</span>
+              </li>
+              <li className="MenuItem">
+                Videos
+                <span>|</span>
+              </li>
+              <li className="MenuItem">
+                Community
+                <span>|</span>
+              </li>
+              <li className="MenuItem">
+                Promote your music
+                <span>|</span>
+              </li>
+              
+            </ul>
+          </div>
         </div>
-        <div className="HeaderMenu">
-          <ul>
-            <li className="the50th">
-              The 50th
-              <span>|</span>
-            </li>
-            <li className="featured">
-              Featured
-              <span>|</span>
-            </li>
-            <li className="charts">
-              Charts
-              <span>|</span>
-            </li>
-            <li className="videos">
-              Videos
-              <span>|</span>
-            </li>
-            <li className="community">
-              Community
-              <span>|</span>
-            </li>
-            <li className="promoteYourMusic">
-              Promote your music
-              <span>|</span>
-            </li>
-            <li className="menuItem">
-              <a href="https://www.facebook.com/Genius/">
-                <svg></svg>
-              </a>
-            </li>
-            <li className="menuItem">
-              <a href="https://twitter.com/Genius">
-                <svg></svg>
-              </a>
-            </li>
-            <li className="menuItem">
-              <a href="https://www.instagram.com/genius/">
-                <svg></svg>
-              </a>
-            </li>
-            <li className="menuItem">
-              <a href="https://www.youtube.com/genius">
-                <svg></svg>
-              </a>
-            </li>
-          </ul>
+        <div className="loginUnit">
+          <Heading headingType="h1" headingText="Sign In" />
+          <form onSubmit={handleSubmit(onLoginFormSubmit)}>
+            <Controller
+              name="userEmail"
+              control={control}
+              render={({ field }) => (
+                <AppInput
+                  hasError={!!errors.userEmail}
+                  errorText={errors.userEmail?.message as string}
+                  placeholder="email"
+                  {...field}
+                />
+              )}
+            />
+            <Controller
+              name="userPassword"
+              control={control}
+              render={({ field }) => (
+                <AppInput
+                  type="password"
+                  hasError={!!errors.userPassword}
+                  errorText={errors.userPassword?.message as string}
+                  placeholder="password"
+                  {...field}
+                />
+              )}
+            />
+            <AppButton type="submit" buttonLabel="Login" />
+          </form>
         </div>
-      </div>
-
-      <div className="loginUnit">
-        <Heading headingType="h1" headingText="Sign In" />
-        <form onSubmit={handleSubmit(onLoginFormSubmit)}>
-          <Controller
-            name="userEmail"
-            control={control}
-            render={({ field }) => (
-              <AppInput
-                hasError={!!errors.userEmail}
-                errorText={errors.userEmail?.message as string}
-                placeholder="email"
-                {...field}
-              />
-            )}
-          />
-          <Controller
-            name="userPassword"
-            control={control}
-            render={({ field }) => (
-              <AppInput
-                type="password"
-                hasError={!!errors.userPassword}
-                errorText={errors.userPassword?.message as string}
-                placeholder="password"
-                {...field}
-              />
-            )}
-          />
-          <AppButton type="submit" buttonLabel="Login" />
-        </form>
-      </div>
     </div>
+    </SignInStyle>
   );
 };
