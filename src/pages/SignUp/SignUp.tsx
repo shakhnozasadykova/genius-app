@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRegisterUserMutation } from "../../store/api/authApi";
+import { Header } from "../../components/UI/Header/Header";
 
 const registrationPageFields = {
     userName: "",
@@ -67,60 +68,7 @@ export const SignUp = () => {
     return (
       <SignInStyle>
         <div>
-          <div className="Header">
-            <div className="HeaderPrimary">
-              <input type="submit" />
-              <img></img>
-            </div>
-            <div className="HeaderMenu">
-              <ul>
-                <li className="the50th">
-                  The 50th
-                  <span>|</span>
-                </li>
-                <li className="featured">
-                  Featured
-                  <span>|</span>
-                </li>
-                <li className="charts">
-                  Charts
-                  <span>|</span>
-                </li>
-                <li className="videos">
-                  Videos
-                  <span>|</span>
-                </li>
-                <li className="community">
-                  Community
-                  <span>|</span>
-                </li>
-                <li className="promoteYourMusic">
-                  Promote your music
-                  <span>|</span>
-                </li>
-                <li className="menuItem">
-                  <a href="https://www.facebook.com/Genius/">
-                    <svg></svg>
-                  </a>
-                </li>
-                <li className="menuItem">
-                  <a href="https://twitter.com/Genius">
-                    <svg></svg>
-                  </a>
-                </li>
-                <li className="menuItem">
-                  <a href="https://www.instagram.com/genius/">
-                    <svg></svg>
-                  </a>
-                </li>
-                <li className="menuItem">
-                  <a href="https://www.youtube.com/genius">
-                    <svg></svg>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <Header />
           <div className="loginUnit">
             <Heading headingType="h1" headingText="Sign In" />
             <form onSubmit={handleSubmit(onRegistrationFormSubmit)}>

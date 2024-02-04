@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import { Header } from "../../components/UI/Header/Header";
 import { SignInStyle } from "./SignIn.style";
 import { Heading } from "../../components/Typography/Heading/Heading";
 import { AppInput } from "../../UI/AppInput/AppInput";
@@ -54,43 +54,7 @@ export const SignIn = () => {
   return (
     <SignInStyle>
       <div>
-        <div className="Header">
-          <div className="HeaderPrimary">
-            <form className="Search">
-              <input type="text" placeholder="Search lyrics  & more" />
-            </form>
-            <img className="Logo" src={require('../../images/Genius_website_logo.svg.png')} alt="Logo"/>
-          </div>
-          <div className="HeaderMenu">
-            <ul>
-              <li className="MenuItem">
-                The 50th
-                <span>|</span>
-              </li>
-              <li className="MenuItem">
-                Featured
-                <span>|</span>
-              </li>
-              <li className="MenuItem">
-                Charts
-                <span>|</span>
-              </li>
-              <li className="MenuItem">
-                Videos
-                <span>|</span>
-              </li>
-              <li className="MenuItem">
-                Community
-                <span>|</span>
-              </li>
-              <li className="MenuItem">
-                Promote your music
-                <span>|</span>
-              </li>
-              
-            </ul>
-          </div>
-        </div>
+        <Header />
         <div className="loginUnit">
           <Heading headingType="h1" headingText="Sign In" />
           <form onSubmit={handleSubmit(onLoginFormSubmit)}>
