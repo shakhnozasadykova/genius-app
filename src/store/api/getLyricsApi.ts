@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { lyricsUrl, xHost, xKey } from '../../utils/lyricsUrl'
+import { LyricsItem } from "../../types/lyrics";
 
 export const LyricsApi = createApi({
   reducerPath: 'LyricsApi',
@@ -12,7 +13,7 @@ export const LyricsApi = createApi({
     } 
   }),
   endpoints: (builder) => ({
-    getChartSongs: builder.query<any, string>({
+    getChartSongs: builder.query<LyricsItem, string>({
       query: (time_period) => ({
         url: "/chart/songs",
         params: {
