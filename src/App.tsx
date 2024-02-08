@@ -3,6 +3,8 @@ import { SignIn } from './pages/SignIn/SignIn';
 import { SignUp } from './pages/SignUp/SignUp';
 import { MainPage } from './pages/MainPage/MainPage';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from './contexts/ThemeProvider';
+import { SongDetails } from './pages/CardPage/CardPage'; 
 
 
 
@@ -11,6 +13,10 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
+      element: <SignUp />
+    },
+    {
+      path: "/sign-in",
       element: <SignIn />
     },
     {
@@ -18,17 +24,19 @@ function App() {
       element: <MainPage />
     },
     {
-      path: "sign-up",
-      element: <SignUp />
-    }
+      path: "/song/:SongId",
+      element: <SongDetails />
+    },
   ])
 
   return (
-    <div className="App">
-      <div className="container">
-        <RouterProvider router={router}/>
+    <ThemeProvider>
+      <div className="App">
+        <div className="container">
+          <RouterProvider router={router} />
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 

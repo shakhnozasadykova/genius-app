@@ -5,6 +5,7 @@ export const TopChartStyle = styled.div`
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
+  font-family: Programme, Arial, sans-serif;
 
   h2 {
     margin-bottom: 20px;
@@ -13,37 +14,38 @@ export const TopChartStyle = styled.div`
   }
 
   .song-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    flex-direction: row;
   }
 
-  .song-card {
+  .Card {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
     background-color: #fff;
     border-radius: 8px;
     padding: 15px;
+    gap: 60px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  .song-title {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #333;
-  }
-
-  .song-image {
-    width: 100%;
+  .Card img {
+    max-width: 150px;
     height: auto;
     border-radius: 4px;
     margin-bottom: 10px;
   }
 
-  .artist {
+  .Card h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  .Card p {
     font-size: 14px;
     color: #777;
+    margin-bottom: 10px;
   }
 `;
-
-
-
-

@@ -9,6 +9,13 @@ export const SignInStyle = styled.div`
   line-height: 140%;
   padding-bottom: 68px;
   position: relative;
+  min-height: 100vh;
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
 
   
   .Header {
