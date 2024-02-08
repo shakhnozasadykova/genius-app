@@ -20,11 +20,11 @@ export const LyricsApi = createApi({
         }
       }),
     }),
-    getSongLyrics: builder.query<string, string>({
-      query: (SongID) => ({
+    getSongLyrics: builder.query<any, any>({
+      query: (id) => ({
         url: "/song/lyrics",
         params: {
-          SongID
+          id
         }
       }),
     }),

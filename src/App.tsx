@@ -24,7 +24,7 @@ function App() {
       element: <MainPage />
     },
     {
-      path: "/song/:SongId",
+      path: "/song",
       element: <SongDetails />
     },
   ])

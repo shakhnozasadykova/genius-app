@@ -1,10 +1,10 @@
-import { useGetChartSongsQuery } from "../../store/api/getLyricsApi";
+// import { useGetChartSongsQuery } from "../../store/api/getLyricsApi";
 import { Heading } from "../Typography/Heading/Heading";
 import { TopChartStyle } from "./TopChart.style";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export interface ChartItem {
-  id: number;
+  id: string;
   item: {
     title: string;
     song_art_image_url: string;
@@ -12,33 +12,25 @@ export interface ChartItem {
   };
 }
 
+export interface ITopChart {
+  title: string
+  imgLink: string
+  altText: string
+  artistName: string
+  onClick?: () => void
+}
 
-
-export const TopChart = () => {
-  const { data, error, isLoading } = useGetChartSongsQuery("day");
-  const navigate = useNavigate()
-  
-  const chartItem = data?.chart_items;
-  console.log("Top Charts Data:", chartItem);
-
-  const onCardClick = (song: ChartItem) =>{
-    navigate(`/song/${song.id}`)
-
-  }
+export const TopChart = ({ title, imgLink, altText, artistName, onClick}: ITopChart) => {
+ 
 
   return (
     <TopChartStyle>
       <Heading headingText="CHARTS" headingType="h2" />
-      {isLoading && <h1>Loading...</h1>}
-      {error && <h1>Error</h1>}
-      {chartItem &&
-        chartItem.map((elem: ChartItem) => (
           <div className="Card">
-            <h3 onClick = {() => onCardClick(elem)}>{elem.item.title}</h3>
-            <img src={elem.item.song_art_image_url} alt={elem.item.title} />
-            <p>Artist: {elem.item.artist_names}</p>
+            <h3 onClick={onClick}>{title}</h3>
+            <img src={imgLink} alt={altText} />
+            <p>Artist: {artistName}</p>
           </div>
-        ))}
     </TopChartStyle>
   );
 };
